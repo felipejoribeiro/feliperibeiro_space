@@ -33,7 +33,7 @@
   <img align="left" src="https://github-readme-stats.vercel.app/api?username=feliperibeiroufu&show_icons=true&hide_border=true&count_private=true&hide=prs,issues" />
 </a>
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=feliperibeiroufu&count_private=true&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=feliperibeiroufu&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
 
 </div>
 
