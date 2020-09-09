@@ -1,0 +1,54 @@
+// Project: feliperieiro.space (web-portfólio)
+// Archive: main SASS file for global styles determination
+// Autor: Felipe J. O. Ribeiro
+//=========================================================
+
+//* Global colour control
+$primary-color: #fff;
+$secondary-color: #fff;
+$primary-ascent: #fff;
+$secondary-ascent: #fff;
+$dark-text-color: #fff;
+$bright-text-color: #fff;
+$global-background: rgb(162, 255, 235);
+
+//* Global fonts control
+$font-size:(
+    "global": 62.5%, // default pixel size= 16, 1rem= 10px
+    "regular": 1.6rem,
+    "sub-medium": 1.5rem,
+    "medium": 2rem,
+    "big": 2.2rem,
+    "bigger": 3rem
+);
+
+$font-weights:(
+   "regular": 400,
+   "medium": 500,
+   "bold": 700,
+   "boldest": 900 
+);
+
+//* Responsiveness thresholds
+
+
+
+//* Global properties
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    // outline: 2px solid red;
+}
+
+html{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+    font-size: map-get($map: $font-size, $key: global);
+    font-weight: map-get($map: $font-weights, $key: regular);
+}
+
+body{
+    background: $global-background;
+}
+
