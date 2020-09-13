@@ -1,0 +1,237 @@
+// Project: feliperieiro.space (web-portfólio)
+// Archive: main SASS file for global styles determination
+// Autor: Felipe J. O. Ribeiro
+//=========================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans&display=swap');
+
+//* Global colour control
+// color for big things
+$primary-color:#2b383b;
+$secondary-color: #86cec2;
+$global-background: #352e3f;
+
+// color for small things 
+$primary-ascent: #BE9962;
+$secondary-ascent: #C5CCB8;
+
+// color for text
+$dark-text-color: #433455;
+$primary-text-color: #BE9962;
+$secondary-text-color: #82A09B;
+
+// Transparent themes
+$t-primary-color: rgba($primary-color, 0.85);
+
+//* Global fonts control
+$font-size:(
+    "global": 62.5%, // default pixel size= 16, 1rem= 10px
+    "regular": 0.6rem,
+    "sub-medium": 1.2rem,
+    "medium": 1.5rem,
+    "big": 2.2rem,
+    "bigger": 3rem
+);
+
+$font-weights:(
+   "regular": 400,
+   "medium": 500,
+   "bold": 700,
+   "boldest": 900 
+);
+
+$font-type:(
+    "primary":  'Work Sans',
+    "secondary": 'Poppins'
+);
+
+//* Responsiveness thresholds
+$medium: 900px;
+
+
+//* Global properties
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    // outline: 2px solid red;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: $global-background;
+    font-family: map-get($map: $font-type, $key: primary), 'sans serif'; 
+    font-size: map-get($map: $font-size, $key: global);
+    font-weight: map-get($map: $font-weights, $key: regular);
+}
+
+.content{
+    min-height:100vh;
+    background-color: #333;
+    background-blend-mode: multiply;
+    background-size: contain;
+    display: grid;
+    place-items: center;
+}
+
+//* Header style goes here  
+header{
+    // General definitions
+    background: $t-primary-color;
+    font-size: map-get($map: $font-size, $key: regular);
+    color: $primary-text-color;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 5rem;
+    display:flex;
+    align-items: center;
+    flex-direction: row-reverse;
+   
+    h1{
+        color: $secondary-color;
+        font-size:map-get($map: $font-size, $key: sub-medium );
+    }    
+
+    nav{
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a{
+            color: $secondary-color;
+            text-decoration: none;
+            text-transform: uppercase;
+            &:hover{
+                color: $secondary-text-color;
+            }
+
+        }
+    }
+
+    // For small screens
+    @media screen and (max-width: $medium){
+
+        h1{
+            margin-right: 1rem;
+        }
+
+        // Css for nav properties 
+        nav{
+            display: block;
+            background: $t-primary-color;
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            text-align: left;
+            top: 100%;
+            transform: scale(1 , 0);
+            transform-origin: top;
+            transition: transform 200ms ease-in-out;
+            
+            ul{
+                height: calc(100% - 5rem);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            a{
+                opacity: 0;
+                transition: opacity 100ms ease-in-out;
+                font-size: map-get($map: $font-size, $key: big );
+            }
+        }
+
+        //* Toggle for small screens
+        .nav-toggle{
+            display: none;  //The toggle stays hidden, other element represent it
+        
+            &:checked ~ nav{
+                transform: scale(1 , 1);
+                
+                a{
+                    transition: opacity 100ms ease-in-out 150ms;
+                    opacity: 1;
+                }
+            }
+
+            // This represents the toggle button
+            &-label{
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                margin-left: 1rem;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                span,
+                span::before, 
+                span::after{
+
+                    display: block;
+                    background: $secondary-color;
+                    height: 0.2rem;
+                    width: 3em;
+                    border-radius: 0.2rem;
+                    position: relative;
+
+                }
+            span::before, 
+            span::after{
+                content: "";
+                position: absolute;
+            }
+            span::before{
+                bottom: 7px;
+            }
+            span::after{
+                top: 7px;
+            }
+            }
+        }
+    }
+
+    // For desktop
+    @media screen and (min-width: $medium){
+        justify-content: space-between;
+        
+        h1{
+            margin-right: 2rem;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .nav-toggle{
+            display: none;
+
+            &-label{
+                display: none;
+            }
+        }
+
+        a{
+            padding: 1rem;
+            margin: 1rem;
+            font-size: map-get($map: $font-size, $key: sub-medium );
+        }
+    }
+
+
+
+
+}
+
+
+
+
+
+
