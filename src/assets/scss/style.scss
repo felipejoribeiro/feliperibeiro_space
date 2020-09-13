@@ -3,19 +3,27 @@
 // Autor: Felipe J. O. Ribeiro
 //=========================================================
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans&display=swap');
+
 //* Global colour control
-$primary-color: #fff;
-$secondary-color: #fff;
-$primary-ascent: #fff;
-$secondary-ascent: #fff;
-$dark-text-color: #fff;
-$bright-text-color: #fff;
-$global-background: rgb(162, 255, 235);
+// color for big things
+$primary-color: #C5CCB8;
+$secondary-color: #82A09B;
+$global-background: #433455;
+
+// color for small things 
+$primary-ascent: #BE9962;
+$secondary-ascent: #C5CCB8;
+
+// color for text
+$dark-text-color: #433455;
+$primary-text-color: #BE9962;
+$secondary-text-color: #82A09B;
 
 //* Global fonts control
 $font-size:(
     "global": 62.5%, // default pixel size= 16, 1rem= 10px
-    "regular": 1.6rem,
+    "regular": 0.6rem,
     "sub-medium": 1.5rem,
     "medium": 2rem,
     "big": 2.2rem,
@@ -29,6 +37,11 @@ $font-weights:(
    "boldest": 900 
 );
 
+$font-type:(
+    "primary":  'Work Sans',
+    "secondary": 'Poppins'
+);
+
 //* Responsiveness thresholds
 
 
@@ -40,15 +53,96 @@ $font-weights:(
     // outline: 2px solid red;
 }
 
-html{
-    margin: 0%;
-    padding: 0%;
-    font-family: sans-serif;
+body{
+    margin: 0;
+    padding: 0;
+    background: $global-background;
+    font-family: map-get($map: $font-type, $key: primary), 'sans serif'; 
     font-size: map-get($map: $font-size, $key: global);
     font-weight: map-get($map: $font-weights, $key: regular);
 }
 
-body{
-    background: $global-background;
+.content{
+    min-height:100vh;
+    background-image: url("https://images.unsplash.com/photo-1599499332864-356ea4ffe0fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+    background-color: #333;
+    background-blend-mode: multiply;
+    background-size: contain;
+    display: grid;
+    place-items: center;
 }
+
+//* Header style goes here
+
+header{
+    font-size: map-get($map: $font-size, $key: regular);
+    color: $dark-text-color;
+    text-align: center;
+    background: rgba($color: $primary-color, $alpha: 0.85);
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+
+    // Css disappearing nav properties 
+    .nav-toggle{
+        display: none;
+    
+        &:checked ~ nav{
+        display: block;
+        background: rgba($primary-color, 0.85);
+        position: absolute;
+        width: 100%;
+        text-align: left;
+        top: 100%;
+
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li{
+                margin: 1em;
+                padding: 1em;
+            }
+        }
+
+        a{
+            color: $dark-text-color;
+            text-decoration: none;
+            font-size: map-get($map: $font-size, $key: big );
+            text-transform: uppercase;
+
+            &:hover{
+                color: $secondary-text-color;
+            }
+        }
+
+    }
+    }
+
+    nav{
+        display: none;
+    }
+
+
+    // button for nav switching 
+    .nav-toggle-label{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        margin-left: 1em;
+        border: 1px solid red;
+        height: 100%;
+        display: flex;
+        display: flex;
+        align-items: center;
+
+    }
+
+}
+
+
+
+
+
 
