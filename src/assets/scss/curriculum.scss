@@ -1,0 +1,129 @@
+// Project: feliperieiro.space (web-portfólio)
+// Archive: main SASS file for global styles determination
+// Autor: Felipe J. O. Ribeiro
+//=========================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Poppins&display=swap');
+
+//* Global colour control
+// color for big things
+$primary-color:#2b383b;
+$secondary-color: #86cec2;
+$global-background: #ffffff;
+
+// color for small things 
+$primary-ascent: #BE9962;
+$secondary-ascent: #C5CCB8;
+
+// color for text
+$dark-text-color: #433455;
+$primary-text-color: #BE9962;
+$secondary-text-color: #82A09B;
+$line-color-b: #ffffff;
+// Transparent themes
+$t-primary-color: rgba($primary-color, 0.85);
+
+//* Global fonts control
+$font-size:(
+    "global": 62.5%, // default pixel size= 16, 1rem= 10px
+    "small": 0.8rem,
+    "regular": 1rem,
+    "sub-medium": 1.1rem,
+    "medium": 1.2rem,
+    "big": 1.4rem
+);
+
+$font-weight:(
+   "thin": 300,
+   "regular": 400,
+   "medium": 500,
+   "bold": 700,
+   "boldest": 900 
+);
+
+$font-type:(
+    "primary":  'Heebo',
+    "second": 'Poppins'
+);
+
+//* Global properties
+
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    // outline: 2px solid red;
+}
+
+html{
+    font-size: map-get($map: $font-size, $key: global);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(61, 65, 98);
+    font-family: map-get($map: $font-type, $key: primary), 'sans serif'; 
+    font-weight: map-get($map: $font-weight, $key: regular);
+    display: flex;
+    justify-content: center;
+}
+
+#resume{
+    height: 29.7rem * 2;
+    width: 21rem * 2;
+    background: $global-background;
+    font-size: map-get($map: $font-size, $key: medium);
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+h1{
+    font-family: map-get($map: $font-type, $key: primary);
+    font-size: map-get($map: $font-size, $key: big);
+    line-height:map-get($map: $font-size, $key:big ) + 0.5rem;
+}
+
+
+h2{
+    font-family: map-get($map: $font-type, $key: primary);
+    font-size: map-get($map: $font-size, $key: medium);
+    font-weight: map-get($map: $font-weight, $key: regular);
+    line-height:map-get($map: $font-size, $key:big ) + 0.5rem;
+}
+
+li{
+    font-family: map-get($map: $font-type, $key: second);
+    font-size: map-get($map: $font-size, $key: small);
+    list-style: none;
+}
+
+//* General properties
+
+.line{
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: $line-color-b;
+    border-radius: 0.2rem;
+}
+
+//* Specific properties
+#resume_left{
+    padding: 2rem 1rem;
+    background-color: rgb(202, 236, 219);
+
+    #resume_profile{
+
+        h2{
+            font-size: 0.9em;
+            margin: 0.5rem 0rem 0rem 0rem;
+        }
+
+    }
+
+    #resume_content{
+        
+    }
+
+}
