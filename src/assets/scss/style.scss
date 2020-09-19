@@ -3,13 +3,14 @@
 // Autor: Felipe J. O. Ribeiro
 //=========================================================
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&Poppins&family=Work+Sans&display=swap');
 
 //* Global colour control
 // color for big things
-$primary-color:#2b383b;
+$primary-color:#597379;
 $secondary-color: #86cec2;
-$global-background: #352e3f;
+$tertiary-color: rgb(210, 234, 235);
+$global-background: rgb(62, 66, 62);
 
 // color for small things 
 $primary-ascent: #BE9962;
@@ -26,9 +27,9 @@ $t-primary-color: rgba($primary-color, 0.85);
 //* Global fonts control
 $font-size:(
     "global": 62.5%, // default pixel size= 16, 1rem= 10px
-    "regular": 0.6rem,
-    "sub-medium": 1.2rem,
-    "medium": 1.5rem,
+    "regular": 1.5rem,
+    "sub-medium": 2rem,
+    "medium": 2.5rem,
     "big": 2.2rem,
     "bigger": 3rem
 );
@@ -42,11 +43,12 @@ $font-weights:(
 
 $font-type:(
     "primary":  'Work Sans',
-    "secondary": 'Poppins'
+    "secondary": 'Poppins',
+    "title": 'Courgette'
 );
 
 //* Responsiveness thresholds
-$medium: 900px;
+$medium: 30em;
 
 
 //* Global properties
@@ -54,6 +56,12 @@ $medium: 900px;
 *, *::before, *::after{
     box-sizing: border-box;
     // outline: 2px solid red;
+    margin: 0%;
+    padding: 0rem;
+}
+
+html{
+    font-size: map-get($map: $font-size, $key: global);
 }
 
 body{
@@ -61,17 +69,7 @@ body{
     padding: 0;
     background: $global-background;
     font-family: map-get($map: $font-type, $key: primary), 'sans serif'; 
-    font-size: map-get($map: $font-size, $key: global);
     font-weight: map-get($map: $font-weights, $key: regular);
-}
-
-.content{
-    min-height:100vh;
-    background-color: #333;
-    background-blend-mode: multiply;
-    background-size: contain;
-    display: grid;
-    place-items: center;
 }
 
 //* Header style goes here  
@@ -83,17 +81,19 @@ header{
     position: fixed;
     z-index: 999;
     width: 100%;
-    height: 5rem;
+    height: 7rem;
     display:flex;
     align-items: center;
     flex-direction: row-reverse;
    
     h1{
+        font-family: map-get($map: $font-type, $key: title );
         color: $secondary-color;
-        font-size:map-get($map: $font-size, $key: sub-medium );
+        font-size:map-get($map: $font-size, $key: medium );
     }    
 
     nav{
+        
         ul{
             margin: 0;
             padding: 0;
@@ -104,8 +104,10 @@ header{
             color: $secondary-color;
             text-decoration: none;
             text-transform: uppercase;
+            transition: color 1s;
             &:hover{
-                color: $secondary-text-color;
+                color: $tertiary-color;
+                border-bottom: 0.2rem solid $tertiary-color;
             }
 
         }
@@ -113,20 +115,26 @@ header{
 
     // For small screens
     @media screen and (max-width: $medium){
-
+        flex-direction: row;
+        height: 4.5em;
+        padding-left: 5vw;
+        padding-right: 10vw;
+        
         h1{
-            margin-right: 1rem;
+            font-size: map-get($map: $font-size, $key: sub-medium);
         }
 
         // Css for nav properties 
         nav{
             display: block;
+            padding: 3rem 0rem 0rem 0rem;
             background: $t-primary-color;
             position: absolute;
             width: 100%;
-            height: 100vh;
+            height:65vh;
             text-align: left;
             top: 100%;
+            left: 0rem;
             transform: scale(1 , 0);
             transform-origin: top;
             transition: transform 200ms ease-in-out;
@@ -135,7 +143,7 @@ header{
                 height: calc(100% - 5rem);
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
             }
 
@@ -163,8 +171,8 @@ header{
             &-label{
                 position: absolute;
                 top: 0%;
-                left: 0%;
-                margin-left: 1rem;
+                right: 0%;
+                margin-right: 1rem;
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -176,7 +184,7 @@ header{
                     display: block;
                     background: $secondary-color;
                     height: 0.2rem;
-                    width: 3em;
+                    width: 2.2em;
                     border-radius: 0.2rem;
                     position: relative;
 
@@ -199,10 +207,8 @@ header{
     // For desktop
     @media screen and (min-width: $medium){
         justify-content: space-between;
-        
-        h1{
-            margin-right: 2rem;
-        }
+        padding-left: 10vw;
+        padding-right: 10vw;
 
         ul{
             display: flex;
@@ -219,14 +225,11 @@ header{
         }
 
         a{
-            padding: 1rem;
-            margin: 1rem;
+            padding: 0rem;
+            margin-left: 5vw;
             font-size: map-get($map: $font-size, $key: sub-medium );
         }
     }
-
-
-
 
 }
 
@@ -234,4 +237,97 @@ header{
 
 
 
+//* Home content styles comes here
+.content-home{
+    position: relative;
+    padding: 0rem;
+    background-blend-mode: multiply;
+    padding: 7rem 0rem 0rem 0rem;
+    height: calc(100vh - 7rem);
+    
+    
+    #hero-graphic{
+        width: 100%;
+        position: relative;
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        .hero-images{
+
+            width: 35rem;
+            height: 35rem;
+            overflow: hidden;
+            border-radius: 20rem;
+            
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    #hero-elements{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+        
+        p{
+            padding: 0rem;
+            font-size: map-get($map: $font-size, $key: regular);
+            color: $secondary-color;
+        }
+
+        #info{
+            color: $secondary-color;
+            font-size: map-get($map: $font-size, $key: sub-medium);
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            
+            ul{
+                list-style: none;
+            }
+
+            a{
+                text-decoration: none;
+                color: $secondary-color;
+
+                &:hover{
+                    color: $tertiary-color;
+                }
+            }
+        }
+        
+    }
+
+    #background-text{
+        position: absolute;
+        top: 7rem;
+        font-size: 2rem;
+    }
+
+
+
+    @media screen and (max-width: $medium){
+
+        #hero-graphic{
+
+            .hero-images{
+                margin-top: 10rem;
+                width: 70vw;
+                height: 70vw;
+                border-radius: 70vw;
+            }      
+        }
+
+    }    
+
+
+}
