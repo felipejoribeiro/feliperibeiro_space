@@ -2,6 +2,8 @@
 // Archive: main SASS file for global styles determination
 // Autor: Felipe J. O. Ribeiro
 //=========================================================
+@charset "utf-8";
+@import '../../node_modules/sass-mq/mq';
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&Poppins&family=Work+Sans&display=swap');
 
@@ -48,8 +50,10 @@ $font-type:(
 );
 
 //* Responsiveness thresholds
-$medium: 800px;
 
+$mq-breakpoints: (
+    desktop: 800px,
+);
 
 //* Global properties
 
@@ -114,7 +118,7 @@ header{
     }
 
     // For small screens
-    @media screen and (max-width: $medium){
+    @include mq($until: desktop){
         flex-direction: row;
         height: 4.5em;
         padding-left: 5vw;
@@ -205,7 +209,7 @@ header{
     }
 
     // For desktop
-    @media screen and (min-width: $medium){
+    @include mq($from: desktop){
         justify-content: space-between;
         padding-left: 10vw;
         padding-right: 10vw;
@@ -315,7 +319,7 @@ header{
 
 
 
-    @media screen and (max-width: $medium){
+    @include mq($until: desktop){
 
         #hero-graphic{
 
